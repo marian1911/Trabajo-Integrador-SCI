@@ -1,0 +1,138 @@
+\documentclass[12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{SISTEMAS DE CONTROL I \\ Trabajo final integrador 
+	\\ Sistema de control de temperatura para un CPU}
+
+\author{Docentes:\\ AGUERO CLAUDIO (Titular) \\ PEDRONI JUAN PABLO (Adjunto)
+	\\ Alumnos: \\ Bernaus Julieta, Campos Mariano}
+	
+\begin{document}
+	
+\maketitle
+
+\begin{abstract}
+	Este proyecto tiene como objetivo diseñar e implementar un sistema de control a lazo cerrado para regular la temperatura de un CPU mediante el ajuste dinámico de la velocidad de un ventilador. El sistema busca mantener la temperatura dentro de límites seguros, optimizando el desempeño y la vida útil del CPU.
+\end{abstract}\newpage
+
+\tableofcontents \newpage
+
+\section{Definición del problema}
+	\subsection{Principio de funcionamiento del sistema}
+	El sistema propuesto es un controlador a lazo cerrado para regular la temperatura de un CPU mediante el ajuste de la velocidad de un ventilador. El principio de funcionamiento se basa en la retroalimentación: se mide constantemente la temperatura del CPU, se compara con un valor deseado (setpoint), y se ajusta dinámicamente la velocidad del ventilador para mantener la temperatura en los límites establecidos.
+
+	\subsection{Variable a controlar}
+	La variable a controlar es la temperatura del CPU,($T_{CPU}$ en grados Celsius, °C). El objetivo es mantenerla dentro de un rango seguro para evitar el sobrecalentamiento, con un setpoint ajustable dependiendo de la carga del sistema.
+	
+	\subsection{Medición de la variable de salida}
+	Si bien algunos CPU tienen incorporados sensores de temperaturas internos,para nuestro caso utilizamos un sensor de temperatura LM35.
+	
+	\begin{itemize}
+		\item Sensor:precisión de ±0.5°C.
+		\item Acondicionamiento de señal:El LM35 podría requerir un ADC si fuera necesario utiliza un microcontrolador(Se determina en las secciones posteriores).
+	\end{itemize}
+	
+	
+	
+	\subsection{Ejecución de la acción de control}
+	La acción de control se ejecutará mediante un ventilador de corriente continua (DC) cuyo motor será controlado con señales PWM (modulación por ancho de pulso). La señal PWM ajustará las revoluciones por minuto (RPM) del ventilador, proporcionalmente a la señal de control generada por el controlador.
+	\newpage
+	
+	\subsection{Variables del sistema}
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|c|c|l|}
+			\hline
+			\textbf{Variable} & \textbf{Unidad} & \textbf{Descripción} \\ \hline
+			$T_{CPU}$ & °C & Temperatura del CPU. \\ \hline
+			$V_{Fan}$ & RPM & Velocidad del ventilador. \\ \hline
+			Señal de control (u) & \% (Duty Cycle) & Señal generada por el controlador (PWM). \\ \hline
+			$T_{Amb}$ & °C & Temperatura ambiente (perturbación). \\ \hline
+		\end{tabular}
+		\caption{Variables del sistema con sus unidades y descripciones.}
+		\label{tab:variables}
+	\end{table}
+	
+	
+	\subsection{Posibles perturbaciones}
+	\begin{itemize}
+		\item Variaciones en la temperatura ambiente $T_{Amb}$ El sistema debe compensar los cambios en la temperatura externa.
+		\item Carga del CPU: A mayor carga, se genera más calor, lo que afecta directamente la variable controlada, la $T_{CPU}$.
+		\item Fluctuaciones de voltaje en el suministro eléctrico: Pueden alterar el funcionamiento del ventilador(No se tiene en cuenta para el diseño).
+	\end{itemize}
+	
+	\subsection{No linealidades involucradas}
+	El sistema de control que regula la temperatura del CPU a través del ventilador debe abordar múltiples fuentes de no linealidad:
+	\begin{itemize}
+		\item Ventilador: La relación entre el ciclo de trabajo PWM y la velocidad del ventilador es no lineal, especialmente a bajas RPM.
+		\item Sensores de temperatura: Los sensores tienen respuestas no lineales que deben ser compensadas para obtener mediciones precisas.
+		\item Transferencia de calor: El comportamiento térmico del CPU y su interacción con el sistema de enfriamiento (ventilador) es no lineal.
+	\end{itemize}
+	
+	\subsection{Niveles de señal de entrada y salida}
+	Existen dos principales señales, donde es de especial interés conocer sus rangos dinámicos, la  $T_{CPU}$ y por otro lado la señal de control $PWM$.Respecto a la primer señal tenemos que la temperatura máxima que puede alcanzar un CPU depende de varios factores, como el modelo específico del procesador, el sistema de refrigeración utilizado, y las condiciones ambientales.Se debe tener en cuenta que:
+	\begin{itemize}
+		\item Temperatura nominal de operación: Un CPU típico a máxima carga generalmente puede alcanzar temperaturas entre 70°C y 90°C. Este rango depende del tipo de CPU (por ejemplo, Intel o AMD), el proceso de fabricación, y las condiciones de refrigeración.
+		\item Temperatura crítica o límite superior: Los fabricantes de CPUs suelen establecer una temperatura máxima segura alrededor de los 100°C a 105°C. Si el CPU alcanza estas temperaturas, el sistema activará medidas de protección, como el thermal throttling (reducción de la velocidad de reloj) o el apagado del sistema para evitar daños.
+	\end{itemize}
+	
+	De lo mencionado anteriormente se concluye que la $T_{CPU}$ oscila entre 30°C  y 100°C, y por tanto teniendo en cuenta el datasheet del sensor LM35, el rango dinámico de la señal resulta de $300[mV]$ hasta $1[V]$ \\
+	Para la segunda señal de interés tenemos la señal PWM, esta varia segun el ciclo de trabajo desde 0\% hasta el 100\%, esto se traduce en un rango dinámico de $0[V]$ (500[RPM]) hasta $5[V]$(5000[RPM]).
+	 
+\section{Análisis de la planta}
+	 En esta sección se plantea un diagrama de bloques para modelar el sistema en su totalidad, se identifican sus partes principales(controlador, planta, sensor), las variables de entrada, salida y perturbaciones, ademas se detalla como interactúan estas entre si.
+	 \subsection{Diagrama de bloques del sistema}
+	 El diagrama de bloques de este sistema incluiría los siguientes elementos:
+	 \begin{itemize}
+	 	\item Entrada (señal de referencia):La temperatura deseada o setpoint (se puede suponer una temperatura objetivo o de referencia a mantener para el CPU, $T_{ref}$.
+	 	\item Controlador: El controlador compara la temperatura medida con la temperatura de referencia y genera una señal de control en forma de PWM para el ventilador.
+	 	\item Actuador: El ventilador actúa como el actuador. Recibe la señal PWM del controlador y ajusta su velocidad en función de la carga térmica del CPU.
+	 	\item Perturbaciones:La temperatura ambiente y la carga del CPU son las principales perturbaciones que afectan la temperatura del CPU. Estas son fuentes de interferencia en el sistema.
+	 	\
+	 \end{itemize}
+	 
+	 
+\section{Especificaciones de diseño}
+
+	
+\section{Diseño del controlador}
+\section{Simulación}
+\section{Conclusiones}
+\section{Bibliografía}
+
+
+
+
+\end{document}

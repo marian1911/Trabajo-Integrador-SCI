@@ -1,0 +1,17 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Definición del problema}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Principio de funcionamiento del sistema}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Variable a controlar}{3}{}%
+\contentsline {subsection}{\numberline {1.3}Medición de la variable de salida}{3}{}%
+\contentsline {subsection}{\numberline {1.4}Ejecución de la acción de control}{3}{}%
+\contentsline {subsection}{\numberline {1.5}Variables del sistema}{4}{}%
+\contentsline {subsection}{\numberline {1.6}Posibles perturbaciones}{4}{}%
+\contentsline {subsection}{\numberline {1.7}No linealidades involucradas}{4}{}%
+\contentsline {subsection}{\numberline {1.8}Niveles de señal de entrada y salida}{5}{}%
+\contentsline {section}{\numberline {2}Análisis de la planta}{5}{}%
+\contentsline {subsection}{\numberline {2.1}Diagrama de bloques del sistema}{5}{}%
+\contentsline {section}{\numberline {3}Especificaciones de diseño}{6}{}%
+\contentsline {section}{\numberline {4}Diseño del controlador}{6}{}%
+\contentsline {section}{\numberline {5}Simulación}{6}{}%
+\contentsline {section}{\numberline {6}Conclusiones}{6}{}%
+\contentsline {section}{\numberline {7}Bibliografía}{6}{}%
