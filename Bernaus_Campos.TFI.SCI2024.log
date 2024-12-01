@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.11)  30 NOV 2024 20:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.11)  1 DEC 2024 15:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -443,11 +443,41 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \openout4 = `Bernaus_Campos.TFI.SCI2024.toc'.
 
  [2] [3]
-Overfull \hbox (51.4pt too wide) in paragraph at lines 76--84
+Overfull \hbox (51.4pt too wide) in paragraph at lines 77--85
  [][] 
  []
 
-[4] [5] [6] (Bernaus_Campos.TFI.SCI2024.aux
+[4] [5]
+<Imagenes/diagrama_de_flujo.png, id=28, 943.525pt x 402.50375pt>
+File: Imagenes/diagrama_de_flujo.png Graphic file (type png)
+<use Imagenes/diagrama_de_flujo.png>
+Package pdftex.def Info: Imagenes/diagrama_de_flujo.png  used on input line 130
+.
+(pdftex.def)             Requested size: 390.0pt x 166.37263pt.
+ [6 <./Imagenes/diagrama_de_flujo.png>]
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 141.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 141.
+
+Missing character: There is no ° in font cmr12!
+[7]
+<Imagenes/pwm_vs_temp.png, id=38, 421.575pt x 316.18124pt>
+File: Imagenes/pwm_vs_temp.png Graphic file (type png)
+<use Imagenes/pwm_vs_temp.png>
+Package pdftex.def Info: Imagenes/pwm_vs_temp.png  used on input line 163.
+(pdftex.def)             Requested size: 390.0pt x 292.50648pt.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 170.
+ [8 <./Imagenes/pwm_vs_temp.png (PNG copy)>] [9]
+<Imagenes/ajuste_modelo.png, id=47, 421.575pt x 316.18124pt>
+File: Imagenes/ajuste_modelo.png Graphic file (type png)
+<use Imagenes/ajuste_modelo.png>
+Package pdftex.def Info: Imagenes/ajuste_modelo.png  used on input line 229.
+(pdftex.def)             Requested size: 390.0pt x 292.50648pt.
+ [10 <./Imagenes/ajuste_modelo.png (PNG copy)>] [11] (Bernaus_Campos.TFI.SCI202
+4.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 )
@@ -457,23 +487,26 @@ L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14652 strings out of 474486
- 291342 string characters out of 5753570
- 1933542 words of memory out of 5000000
- 36726 multiletter control sequences out of 15000+600000
- 564182 words of font info for 56 fonts, out of 8000000 for 9000
+ 14963 strings out of 474486
+ 294712 string characters out of 5753570
+ 2197542 words of memory out of 5000000
+ 37035 multiletter control sequences out of 15000+600000
+ 564519 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,10n,87p,469b,365s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,10n,87p,469b,1611s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\maria\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1200.pk><D:/Latex/Programa latex/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/
 Latex/Programa latex/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Latex/Progra
 ma latex/fonts/type1/public/amsfonts/cm/cmmi12.pfb><D:/Latex/Programa latex/fon
 ts/type1/public/amsfonts/cm/cmmi8.pfb><D:/Latex/Programa latex/fonts/type1/publ
 ic/amsfonts/cm/cmr10.pfb><D:/Latex/Programa latex/fonts/type1/public/amsfonts/c
-m/cmr12.pfb><D:/Latex/Programa latex/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on Bernaus_Campos.TFI.SCI2024.pdf (6 pages, 113259 bytes).
+m/cmr12.pfb><D:/Latex/Programa latex/fonts/type1/public/amsfonts/cm/cmr17.pfb><
+D:/Latex/Programa latex/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/Latex/Progr
+ama latex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Latex/Programa latex/fo
+nts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on Bernaus_Campos.TFI.SCI2024.pdf (11 pages, 236649 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
+ 102 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 

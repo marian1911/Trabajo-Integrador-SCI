@@ -50,6 +50,7 @@
 \tableofcontents \newpage
 
 \section{Definición del problema}
+
 	\subsection{Principio de funcionamiento del sistema}
 	El sistema propuesto es un controlador a lazo cerrado para regular la temperatura de un CPU mediante el ajuste de la velocidad de un ventilador. El principio de funcionamiento se basa en la retroalimentación: se mide constantemente la temperatura del CPU, se compara con un valor deseado (setpoint), y se ajusta dinámicamente la velocidad del ventilador para mantener la temperatura en los límites establecidos.
 
@@ -109,10 +110,11 @@
 	\end{itemize}
 	
 	De lo mencionado anteriormente se concluye que la $T_{CPU}$ oscila entre 30°C  y 100°C, y por tanto teniendo en cuenta el datasheet del sensor LM35, el rango dinámico de la señal resulta de $300[mV]$ hasta $1[V]$ \\
-	Para la segunda señal de interés tenemos la señal PWM, esta varia segun el ciclo de trabajo desde 0\% hasta el 100\%, esto se traduce en un rango dinámico de $0[V]$ (500[RPM]) hasta $5[V]$(5000[RPM]).
+	Para la segunda señal de interés tenemos la señal PWM, esta varia segun el ciclo de trabajo desde 0\% hasta el 100\%, esto se traduce en un rango dinámico de $0[V]$ (300[RPM]) hasta $5[V]$(5000[RPM]).
 	 
 \section{Análisis de la planta}
 	 En esta sección se plantea un diagrama de bloques para modelar el sistema en su totalidad, se identifican sus partes principales(controlador, planta, sensor), las variables de entrada, salida y perturbaciones, ademas se detalla como interactúan estas entre si.
+	 
 	 \subsection{Diagrama de bloques del sistema}
 	 El diagrama de bloques de este sistema incluiría los siguientes elementos:
 	 \begin{itemize}
@@ -120,10 +122,119 @@
 	 	\item Controlador: El controlador compara la temperatura medida con la temperatura de referencia y genera una señal de control en forma de PWM para el ventilador.
 	 	\item Actuador: El ventilador actúa como el actuador. Recibe la señal PWM del controlador y ajusta su velocidad en función de la carga térmica del CPU.
 	 	\item Perturbaciones:La temperatura ambiente y la carga del CPU son las principales perturbaciones que afectan la temperatura del CPU. Estas son fuentes de interferencia en el sistema.
-	 	\
+	 	\item Sensor:El sensor mide la temperatura real del CPU, $T_{CPU}$ y esta señal es retroalimentada al controlador.
+	 	\item Planta: El CPU es el elemento a controlar, las variables de entrada son las perturbaciones que afectan su temperatura, y la refrigeración qu aporta el ventilador, la salida es el process value $T_{CPU}$
 	 \end{itemize}
 	 
-	 
+	\begin{figure}
+		\includegraphics[width=1\linewidth]{Imagenes/diagrama_de_flujo}
+		\caption[Diagrama de bloques del sistema]{Diagrama de bloques del sistema}
+		\label{fig:diagramadeflujo}
+	\end{figure}
+	
+	\subsection{Modelado matemático de los componentes}
+	
+		\subsubsection{Sensor de temperatura}
+		En el caso de la función de transferencia del sensor de temperatura LM35,esta se puede obtener de forma teórica, ya que en el datasheet se encuentra la expresión $V_{OUT}=F(T_{Amb})$, para la aplicación típica (FIGURE 1. Basic Centigrade Temperature Sensor), la expresión resulta:
+		
+		\begin{equation}
+			V_{OUT}[V]= 0[V]+0.01[V].T_{Amb}[°C]
+		\end{equation}
+		
+		La función de transferencia de interés, se obtienen pasando la ecuación al dominio operacional y despejando la expresión $Voltaje/Temperatura$, esta resulta:
+		
+		\begin{equation}
+			FdT_{Sensor}=\frac{V(s)}{T(s)}=0.01
+		\end{equation}
+		
+		\subsubsection{Ventilador}
+		Para obtener la función de transferencia del ventilador se opto por hacerlo de forma experimental, ya que la relación entrada-salida de la señal PWM y temperatura, no se encontraba disponible en ninguna bibliografía.El procedimiento es el siguiente:
+		\begin{itemize}
+			\item Armar el sistema de refrigeración con el ventilador y el habitáculo donde se va a encontrar el CPU.
+			\item Hacer variar la señal de entrada PWM del ventilador y medir la temperatura resultante en el habitáculo.
+			\item Con los datos obtenidos, mediante un script en Matlab, obtener la función de transferencia
+		\end{itemize}
+		
+		Nota: En nuestro caso los datos son simulados con un script de python.\newpage
+		
+		\begin{figure}
+		
+			\label{fig:pwmvstemp}
+			\includegraphics[width=1\linewidth]{Imagenes/pwm_vs_temp}
+			\caption[Datos recopilados]{Datos recopilados}
+		\end{figure}
+		
+		Con los datos obtenidos se realiza el siguiente análisis para obtener la función de transferencia:
+		
+		\begin{lstlisting}
+			%Calculo de funcion de transferencias para el vantilador
+			%Importamos los datos obtenidos de las mediciones
+			opts = delimitedTextImportOptions("NumVariables", 2);
+			opts.DataLines = [2, Inf];
+			opts.Delimiter = ",";
+			opts.VariableNames = ["PWM", "TemperatureC"];
+			opts.VariableTypes = ["double", "double"];
+			opts.ExtraColumnsRule = "ignore";
+			opts.EmptyLineRule = "read";
+			data = readtable("D:\GD\Sistemas de control I\Trabajo-Integrador-SCI\Datos\pwm_temperature_data.csv", opts)
+			
+			% Leer el archivo CSV como tabla
+			data = readtable("D:\GD\Sistemas de control I\Trabajo-Integrador-SCI\Datos\pwm_temperature_data.csv",opts);
+			
+			% Separar las columnas en variables
+			PWM = data.("PWM"); % Columna PWM
+			Temperature = data.("TemperatureC"); % Columna Temperatura
+			
+			% Crear el grafico
+			figure;
+			plot(PWM, Temperature, 'LineWidth', 1.5, 'MarkerSize', 6, 'DisplayName', 'Temperatura vs PWM');
+			grid on;
+			xlabel('PWM (%)', 'FontSize', 12);
+			ylabel('Temperatura (C)', 'FontSize', 12);
+			title('Relacion entre Temperatura y Senal PWM', 'FontSize', 14);
+			legend('show', 'Location', 'northeast', 'FontSize', 10);
+			
+			
+			% Crear entrada y salida como senales en tiempo (asumiendo un muestreo uniforme)
+			t = linspace(0, length(PWM)-1, length(PWM)); % Tiempo ficticio
+			u = PWM; %Entrada (PWM )
+			y = Temperature; % Salida (Temperatura)
+			
+			% Ajustar un modelo de primer o segundo orden (dominio Laplace)
+			data_id = iddata(y, u, 1); % Crear datos de identificacion con un muestreo ficticio de 1s
+			model = tfest(data_id, 1, 0); % Ajustar un modelo de primer orden sin ceros
+			
+			% Mostrar la funcion de transferencia estimada
+			disp('Funcion de transferencia estimada:');
+			disp(model);
+			
+			% Graficar comparacion entre el modelo ajustado y los datos
+			figure;
+			compare(data_id, model);
+			title('Comparacion entre datos reales y modelo ajustado', 'FontSize', 14);
+			xlabel('Tiempo (s)', 'FontSize', 12);
+			ylabel('Temperatura (C)', 'FontSize', 12);
+			legend('Datos reales', 'Modelo ajustado', 'Location', 'best', 'FontSize', 10);
+			grid on;
+		\end{lstlisting}
+		
+		La función de transferencia obtenida resulta:
+		\begin{equation}
+			FdT_{Ventilador}=\frac{-0.0038}{s+0.007}
+		\end{equation}
+		
+	\begin{figure}[h!]
+		\caption[Ajuste del modelo a partir de los datos]{}
+		\label{fig:ajustemodelo}
+		\includegraphics[width=1\linewidth]{Imagenes/ajuste_modelo}
+		\caption[Ajuste del modelo a partir de los datos]{Ajuste del modelo a partir de los datos}
+	\end{figure}\newpage
+	
+	\subsubsection{Perturbaciones}
+	
+		
+		
+	
 \section{Especificaciones de diseño}
 
 	

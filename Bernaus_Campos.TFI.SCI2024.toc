@@ -10,8 +10,12 @@
 \contentsline {subsection}{\numberline {1.8}Niveles de señal de entrada y salida}{5}{}%
 \contentsline {section}{\numberline {2}Análisis de la planta}{5}{}%
 \contentsline {subsection}{\numberline {2.1}Diagrama de bloques del sistema}{5}{}%
-\contentsline {section}{\numberline {3}Especificaciones de diseño}{6}{}%
-\contentsline {section}{\numberline {4}Diseño del controlador}{6}{}%
-\contentsline {section}{\numberline {5}Simulación}{6}{}%
-\contentsline {section}{\numberline {6}Conclusiones}{6}{}%
-\contentsline {section}{\numberline {7}Bibliografía}{6}{}%
+\contentsline {subsection}{\numberline {2.2}Modelado matemático de los componentes}{7}{}%
+\contentsline {subsubsection}{\numberline {2.2.1}Sensor de temperatura}{7}{}%
+\contentsline {subsubsection}{\numberline {2.2.2}Ventilador}{7}{}%
+\contentsline {subsubsection}{\numberline {2.2.3}Perturbaciones}{11}{}%
+\contentsline {section}{\numberline {3}Especificaciones de diseño}{11}{}%
+\contentsline {section}{\numberline {4}Diseño del controlador}{11}{}%
+\contentsline {section}{\numberline {5}Simulación}{11}{}%
+\contentsline {section}{\numberline {6}Conclusiones}{11}{}%
+\contentsline {section}{\numberline {7}Bibliografía}{11}{}%
