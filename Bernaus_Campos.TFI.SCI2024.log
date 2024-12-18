@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.11)  1 DEC 2024 15:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.8.11)  17 DEC 2024 23:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -447,37 +447,63 @@ Overfull \hbox (51.4pt too wide) in paragraph at lines 77--85
  [][] 
  []
 
-[4] [5]
-<Imagenes/diagrama_de_flujo.png, id=28, 943.525pt x 402.50375pt>
+[4]
+
+LaTeX Warning: Command \textordmasculine invalid in math mode on input line 118
+.
+
+
+LaTeX Warning: Command \textordmasculine invalid in math mode on input line 118
+.
+
+
+LaTeX Warning: Command \textordmasculine invalid in math mode on input line 118
+.
+
+
+LaTeX Warning: Command \textordmasculine invalid in math mode on input line 118
+.
+
+Missing character: There is no º in font cmr12!
+Missing character: There is no º in font cmr12!
+[5]
+<Imagenes/Modelo_Planta.drawio.png, id=29, 553.06625pt x 392.46625pt>
+File: Imagenes/Modelo_Planta.drawio.png Graphic file (type png)
+<use Imagenes/Modelo_Planta.drawio.png>
+Package pdftex.def Info: Imagenes/Modelo_Planta.drawio.png  used on input line 
+128.
+(pdftex.def)             Requested size: 350.99762pt x 249.07555pt.
+ [6 <./Imagenes/Modelo_Planta.drawio.png>]
+<Imagenes/diagrama_de_flujo.png, id=35, 943.525pt x 402.50375pt>
 File: Imagenes/diagrama_de_flujo.png Graphic file (type png)
 <use Imagenes/diagrama_de_flujo.png>
-Package pdftex.def Info: Imagenes/diagrama_de_flujo.png  used on input line 130
+Package pdftex.def Info: Imagenes/diagrama_de_flujo.png  used on input line 147
 .
 (pdftex.def)             Requested size: 390.0pt x 166.37263pt.
- [6 <./Imagenes/diagrama_de_flujo.png>]
-
-LaTeX Warning: Command \textdegree invalid in math mode on input line 141.
 
 
-LaTeX Warning: Command \textdegree invalid in math mode on input line 141.
+LaTeX Warning: Command \textdegree invalid in math mode on input line 158.
+
+
+LaTeX Warning: Command \textdegree invalid in math mode on input line 158.
 
 Missing character: There is no ° in font cmr12!
-[7]
-<Imagenes/pwm_vs_temp.png, id=38, 421.575pt x 316.18124pt>
+[7 <./Imagenes/diagrama_de_flujo.png>] [8]
+<Imagenes/pwm_vs_temp.png, id=44, 421.575pt x 316.18124pt>
 File: Imagenes/pwm_vs_temp.png Graphic file (type png)
 <use Imagenes/pwm_vs_temp.png>
-Package pdftex.def Info: Imagenes/pwm_vs_temp.png  used on input line 163.
+Package pdftex.def Info: Imagenes/pwm_vs_temp.png  used on input line 180.
 (pdftex.def)             Requested size: 390.0pt x 292.50648pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 170.
- [8 <./Imagenes/pwm_vs_temp.png (PNG copy)>] [9]
-<Imagenes/ajuste_modelo.png, id=47, 421.575pt x 316.18124pt>
+(Font)              <5> on input line 187.
+ [9 <./Imagenes/pwm_vs_temp.png (PNG copy)>] [10]
+<Imagenes/ajuste_modelo.png, id=53, 421.575pt x 316.18124pt>
 File: Imagenes/ajuste_modelo.png Graphic file (type png)
 <use Imagenes/ajuste_modelo.png>
-Package pdftex.def Info: Imagenes/ajuste_modelo.png  used on input line 229.
+Package pdftex.def Info: Imagenes/ajuste_modelo.png  used on input line 246.
 (pdftex.def)             Requested size: 390.0pt x 292.50648pt.
- [10 <./Imagenes/ajuste_modelo.png (PNG copy)>] [11] (Bernaus_Campos.TFI.SCI202
-4.aux
+ [11 <./Imagenes/ajuste_modelo.png (PNG copy)>] [12]
+(Bernaus_Campos.TFI.SCI2024.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 )
@@ -487,10 +513,10 @@ L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14963 strings out of 474486
- 294712 string characters out of 5753570
- 2197542 words of memory out of 5000000
- 37035 multiletter control sequences out of 15000+600000
+ 14980 strings out of 474486
+ 295228 string characters out of 5753570
+ 2198542 words of memory out of 5000000
+ 37052 multiletter control sequences out of 15000+600000
  564519 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,10n,87p,469b,1611s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -504,9 +530,9 @@ m/cmr12.pfb><D:/Latex/Programa latex/fonts/type1/public/amsfonts/cm/cmr17.pfb><
 D:/Latex/Programa latex/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/Latex/Progr
 ama latex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Latex/Programa latex/fo
 nts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Bernaus_Campos.TFI.SCI2024.pdf (11 pages, 236649 bytes).
+Output written on Bernaus_Campos.TFI.SCI2024.pdf (12 pages, 247883 bytes).
 PDF statistics:
- 102 PDF objects out of 1000 (max. 8388607)
+ 107 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 28 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

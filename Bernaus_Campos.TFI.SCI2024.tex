@@ -113,10 +113,27 @@
 	Para la segunda señal de interés tenemos la señal PWM, esta varia segun el ciclo de trabajo desde 0\% hasta el 100\%, esto se traduce en un rango dinámico de $0[V]$ (300[RPM]) hasta $5[V]$(5000[RPM]).
 	 
 \section{Análisis de la planta}
-	 En esta sección se plantea un diagrama de bloques para modelar el sistema en su totalidad, se identifican sus partes principales(controlador, planta, sensor), las variables de entrada, salida y perturbaciones, ademas se detalla como interactúan estas entre si.
+	 En este caso la planta es el CPU con su respectivo disipador, para obtener el modelo matemático de esta se recurre a la ley de Ohm térmica. Ademas para obtener una mejor aproximación se modela la inercia térmica de los cuerpos como una capacidad, se tiene:
+	 \begin{equation}
+	 	I[A]=\frac{\bigtriangleup V[V]}{R[ohm]}=Q[W]=\frac{\bigtriangleup T[Cº]}{Rth[Cº/W]}
+	 \end{equation}
+	 
+	 \begin{equation}
+	 	Cth[J/C]
+	 \end{equation}
+	 
+	 Para la perturbación producida por la carga del CPU, esta aporta una cantidad de calor $Q[W]$ a la planta, por lo que se puede modelar con una fuente de corriente.El resultado del modelo tenemos dos flujos de calor, el entrante por la carga del CPU y el saliente debido a que $T_{CPU}<T_{CPU}$
+	 
+	\begin{figure}
+		\includegraphics[width=0.9\linewidth]{Imagenes/Modelo_Planta.drawio}
+		\caption[Modelo de la planta]{Modelo de la planta}
+		\label{fig:modeloplanta}
+	\end{figure}
+	 
+	 
 	 
 	 \subsection{Diagrama de bloques del sistema}
-	 El diagrama de bloques de este sistema incluiría los siguientes elementos:
+	 Se plantea un diagrama de bloques para modelar el sistema en su totalidad, se identifican sus partes principales(controlador, planta, sensor), las variables de entrada, salida y perturbaciones, ademas se detalla como interactúan estas entre si.
 	 \begin{itemize}
 	 	\item Entrada (señal de referencia):La temperatura deseada o setpoint (se puede suponer una temperatura objetivo o de referencia a mantener para el CPU, $T_{ref}$.
 	 	\item Controlador: El controlador compara la temperatura medida con la temperatura de referencia y genera una señal de control en forma de PWM para el ventilador.
