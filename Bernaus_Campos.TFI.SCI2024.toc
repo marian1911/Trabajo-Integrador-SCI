@@ -4,18 +4,23 @@
 \contentsline {subsection}{\numberline {1.2}Variable a controlar}{3}{}%
 \contentsline {subsection}{\numberline {1.3}Medición de la variable de salida}{3}{}%
 \contentsline {subsection}{\numberline {1.4}Ejecución de la acción de control}{3}{}%
-\contentsline {subsection}{\numberline {1.5}Variables del sistema}{4}{}%
-\contentsline {subsection}{\numberline {1.6}Posibles perturbaciones}{4}{}%
+\contentsline {subsection}{\numberline {1.5}Variables del sistema}{3}{}%
+\contentsline {subsection}{\numberline {1.6}Posibles perturbaciones}{3}{}%
 \contentsline {subsection}{\numberline {1.7}No linealidades involucradas}{4}{}%
-\contentsline {subsection}{\numberline {1.8}Niveles de señal de entrada y salida}{5}{}%
-\contentsline {section}{\numberline {2}Análisis de la planta}{5}{}%
+\contentsline {subsection}{\numberline {1.8}Niveles de señal de entrada y salida}{4}{}%
+\contentsline {section}{\numberline {2}Análisis de la planta}{4}{}%
 \contentsline {subsection}{\numberline {2.1}Diagrama de bloques del sistema}{6}{}%
-\contentsline {subsection}{\numberline {2.2}Modelado matemático de los componentes}{7}{}%
-\contentsline {subsubsection}{\numberline {2.2.1}Sensor de temperatura}{7}{}%
-\contentsline {subsubsection}{\numberline {2.2.2}Ventilador}{8}{}%
-\contentsline {subsubsection}{\numberline {2.2.3}Perturbaciones}{12}{}%
-\contentsline {section}{\numberline {3}Especificaciones de diseño}{12}{}%
-\contentsline {section}{\numberline {4}Diseño del controlador}{12}{}%
-\contentsline {section}{\numberline {5}Simulación}{12}{}%
-\contentsline {section}{\numberline {6}Conclusiones}{12}{}%
-\contentsline {section}{\numberline {7}Bibliografía}{12}{}%
+\contentsline {subsection}{\numberline {2.2}Modelado matemático de los componentes}{6}{}%
+\contentsline {subsubsection}{\numberline {2.2.1}Sensor de temperatura}{6}{}%
+\contentsline {subsubsection}{\numberline {2.2.2}Ventilador}{7}{}%
+\contentsline {subsubsection}{\numberline {2.2.3}Comparador}{9}{}%
+\contentsline {subsection}{\numberline {2.3}Función de transferencia global}{11}{}%
+\contentsline {subsection}{\numberline {2.4}Análisis de estabilidad absoluta y relativa}{11}{}%
+\contentsline {subsection}{\numberline {2.5}Análisis de la respuesta temporal}{13}{}%
+\contentsline {subsubsection}{\numberline {2.5.1}Determinación del tipo de sistema}{15}{}%
+\contentsline {subsubsection}{\numberline {2.5.2}Polos dominantes}{15}{}%
+\contentsline {section}{\numberline {3}Especificaciones de diseño}{16}{}%
+\contentsline {section}{\numberline {4}Diseño del controlador}{16}{}%
+\contentsline {section}{\numberline {5}Simulación}{21}{}%
+\contentsline {section}{\numberline {6}Conclusiones}{23}{}%
+\contentsline {section}{\numberline {7}Bibliografía}{23}{}%
